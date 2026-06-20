@@ -14,23 +14,32 @@ What it does to each image:
   5. Saves as PNG with alpha into an output folder.
 
 Usage:
-  pip install pillow --break-system-packages
-  python3 process_flowers.py /path/to/jpgs /path/to/output
-  aka, in Desktop/meetpair: 
-  python3 tools/process_flowers.py assets/images/flowers/raw/***DATEFOLDERNAME*** assets/images/flowers/processed
+  pip install pillow
 
-If no paths given, defaults to ./flowers_in -> ./flowers_out
+  to run, in Desktop/meetpair: 
+  python3 tools/process_flowers.py assets/images/flowers/raw/new assets/images/flowers/processed
+
+    If no paths given, defaults to ./flowers_in -> ./flowers_out
+
+After processing, this script also rewrites the FLOWER_IMAGE_SOURCES array
+"// FLOWER_LIST_START" / "// FLOWER_LIST_END" markers in FLOWER_JAR_JS_PATH
+(set below) to list every PNG currently in the output folder.
 """
 
 import sys
 import os
+import re
 from PIL import Image
 
-WHITE_THRESHOLD = 235      # pixels with all channels >= this are "background"
-SOFT_EDGE_RANGE = 25       # how many levels below threshold to feather alpha over
+WHITE_THRESHOLD = 250      # pixels with all channels >= this are "background", higher = keeps more light colors, 255 = white, 235 for colorful images
+SOFT_EDGE_RANGE = 8       # how many levels below threshold to feather alpha over, 25 for colorful images, 8 for pastel images
 OUTPUT_SIZE = 240          # final square output size in pixels
 PADDING_RATIO = 0.06       # fraction of output size left as breathing room around the crop
 
+# ---- EDIT THIS to point at your actual flower-jar.js file ----
+FLOWER_JAR_JS_PATH = "assets/js/flower-jar.js"
+FLOWER_IMAGE_URL_PREFIX = "assets/images/flowers/processed"
+# ----------------------------------------------------------------
 
 def remove_white_background(img: Image.Image) -> Image.Image:
     img = img.convert("RGBA")
@@ -80,6 +89,40 @@ def process_one(in_path: str, out_path: str):
     img = img.resize((OUTPUT_SIZE, OUTPUT_SIZE), Image.LANCZOS)
     img.save(out_path, "PNG")
 
+def sync_flower_jar_js(out_dir: str, js_path: str, image_url_prefix: str):
+    if not os.path.isfile(js_path):
+        print(f"\nSkipped JS sync: {js_path} not found")
+        return
+
+    png_files = sorted(f for f in os.listdir(out_dir) if f.lower().endswith(".png"))
+    if not png_files:
+        print(f"\nSkipped JS sync: no PNGs found in {out_dir}")
+        return
+
+    lines = ["  // FLOWER_LIST_START", "  var FLOWER_IMAGE_SOURCES = ["]
+    for f in png_files:
+        lines.append(f"    '{image_url_prefix.rstrip('/')}/{f}',")
+    lines.append("  ];")
+    lines.append("  // FLOWER_LIST_END")
+    new_block = "\n".join(lines)
+
+    with open(js_path, "r") as f:
+        content = f.read()
+
+    pattern = re.compile(
+        r"  // FLOWER_LIST_START.*?// FLOWER_LIST_END",
+        re.DOTALL,
+    )
+
+    if not pattern.search(content):
+        print(f"\nSkipped JS sync: markers not found in {js_path}")
+        return
+
+    updated = pattern.sub(new_block, content, count=1)
+    with open(js_path, "w") as f:
+        f.write(updated)
+
+    print(f"\nSynced {len(png_files)} flower paths into {js_path}")
 
 def main():
     in_dir = sys.argv[1] if len(sys.argv) > 1 else "flowers_in"
@@ -119,6 +162,8 @@ def main():
             print(f"  FAILED on {filename}: {e}")
 
     print(f"\nDone. {len(files)} images written to {out_dir}/")
+
+    sync_flower_jar_js(out_dir, FLOWER_JAR_JS_PATH, FLOWER_IMAGE_URL_PREFIX)
 
 
 if __name__ == "__main__":

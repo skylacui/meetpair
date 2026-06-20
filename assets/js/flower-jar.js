@@ -2,11 +2,20 @@
   // List every processed flower filename here. Update this array whenever
   // you run process_flowers.py on a new batch — the script's output
   // filenames (flower-01-..., flower-02-..., etc.) go straight in.
+  // FLOWER_LIST_START
   var FLOWER_IMAGE_SOURCES = [
     'assets/images/flowers/processed/flower-01-IMG_0514.png',
     'assets/images/flowers/processed/flower-02-IMG_0515.png',
     'assets/images/flowers/processed/flower-03-IMG_0516.png',
+    'assets/images/flowers/processed/flower-04-IMG_0521.png',
+    'assets/images/flowers/processed/flower-05-IMG_0522.png',
+    'assets/images/flowers/processed/flower-06-IMG_0523.png',
+    'assets/images/flowers/processed/flower-07-IMG_0524.png',
+    'assets/images/flowers/processed/flower-08-IMG_0525.png',
+    'assets/images/flowers/processed/flower-09-tester.png',
+    'assets/images/flowers/processed/flower-10-IMG_8996.png',
   ];
+  // FLOWER_LIST_END
 
   var PIECE_COUNT = 100;
   var MIN_RADIUS = 13;
