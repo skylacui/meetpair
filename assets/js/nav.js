@@ -41,7 +41,7 @@
     return `
       <div class="footer-inner">
         <p style="margin-bottom: 3px;" class="hero-sub">Questions?</p>
-        <a style="margin-bottom: 3px;" href="mailto:cuiskyla@gmail.com?subject=PAIR%20%2726!!!" class="hero-sub footer-text">Contact us</a>
+        <a style="margin-bottom: 3px;" href="mailto:cuiskyla@gmail.com?subject=PAIR%20%2726!!!&body=Hi%20Skyla%2C%0A%0A%0A" class="hero-sub footer-text">Contact us</a>
       </div>`;
   }
 
@@ -53,14 +53,14 @@
     if (ftr) ftr.innerHTML = buildFooter();
 
     // Close dropdown when Escape is pressed while focus is inside it
-    document.addEventListener('keydown', function (e) {
-      if (e.key === 'Escape') {
-        var focused = document.activeElement;
-        if (focused && focused.closest('.nav-dropdown')) {
-          var trigger = document.querySelector('.nav-dropdown-trigger');
-          if (trigger) trigger.focus();
-        }
-      }
-    });
+    // document.addEventListener('keydown', function (e) {
+    //   if (e.key === 'Escape') {
+    //     var focused = document.activeElement;
+    //     if (focused && focused.closest('.nav-dropdown')) {
+    //       var trigger = document.querySelector('.nav-dropdown-trigger');
+    //       if (trigger) trigger.focus();
+    //     }
+    //   }
+    // });
   });
 })();
