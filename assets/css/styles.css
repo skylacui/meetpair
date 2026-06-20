@@ -367,6 +367,23 @@ a { color: inherit; text-decoration: none; }
 
 .archive-closing { font-style: italic; font-size: 14px; opacity: 0.72; text-align: center; max-width: 520px; margin: 0 auto; line-height: 1.7; }
 
+/* ── FLOWER JAR ── */
+.flower-jar-section { padding-top: 60px; margin-bottom: 0px; }
+.flower-jar-wrap {
+  padding: 8px;
+}
+.flower-jar-canvas {
+  display: block; 
+  width: 100%;
+  height: 580px;
+  /* cursor: pointer; */
+  
+}
+.flower-jar-caption {
+  text-align: center; font-size: 12px; opacity: 0.6;
+  margin-top: 14px; letter-spacing: 0.02em;
+}
+
 /* ── RESPONSIVE ── */
 @media (max-width: 680px) {
   .archive-row { grid-template-columns: 1fr; }
@@ -378,6 +395,7 @@ a { color: inherit; text-decoration: none; }
   .concept-divider { flex: 1 1 100%; order: 2; padding: 0; }
   .concept-chip { flex: 1 1 100%; }
   .concept-chip--reverse { border-radius: 16px; }
+  .flower-jar-canvas { height: 360px; }
 }
 @media (max-width: 520px) {
   .hero h1 { font-size: 30px; }

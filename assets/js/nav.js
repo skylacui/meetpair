@@ -31,6 +31,7 @@
         <div class="nav-right">
           <a href="about.html"${active('about')}>About</a>
           <a href="archive.html"${active('archive')}>Archive</a>
+          <a href="art.html"${active('art')}>Art</a>
         </div>
       </nav>`;
   }
