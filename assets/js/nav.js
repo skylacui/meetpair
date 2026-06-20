@@ -16,7 +16,7 @@
       <nav class="site-nav" aria-label="Main navigation">
         <div class="nav-left">
           <a href="index.html" class="nav-logo-link">
-            <img src="assets/images/pair-logo.png" alt="PAIR — home" class="nav-logo">
+            <span class="logo nav-logo" role="img" aria-label="PAIR — home"></span>
           </a>
           <div class="nav-dropdown">
             <a href="index.html" class="nav-dropdown-trigger">
