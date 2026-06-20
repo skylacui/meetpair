@@ -17,11 +17,11 @@
   ];
   // FLOWER_LIST_END
 
-  var PIECE_COUNT = 100;
+  var PIECE_COUNT = 150;
   var MIN_RADIUS = 13;
   var MAX_RADIUS = 20;
-  var HOVER_RADIUS = 150;
-  var HOVER_STRENGTH = 0.012;
+  var HOVER_RADIUS = 80;
+  var HOVER_STRENGTH = 0.03;
   var PUNCH_RADIUS = 200;
   var PUNCH_STRENGTH = 0.5;
 
