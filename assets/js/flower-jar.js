@@ -12,8 +12,6 @@
     'assets/images/flowers/processed/flower-06-IMG_0523.png',
     'assets/images/flowers/processed/flower-07-IMG_0524.png',
     'assets/images/flowers/processed/flower-08-IMG_0525.png',
-    'assets/images/flowers/processed/flower-09-tester.png',
-    'assets/images/flowers/processed/flower-10-IMG_8996.png',
   ];
   // FLOWER_LIST_END
 

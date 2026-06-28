@@ -150,7 +150,9 @@ a { color: inherit; text-decoration: none; }
 .hero h1 { font-size: 40px; line-height: 1.18; margin-bottom: 18px; }
 .hero-sub { font-size: 14px; opacity: 0.8; margin-bottom: 34px; line-height: 1.65; }
 .hero-buttons { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
-
+.hero-emphasis {
+  font-style: italic;
+}
 /* CTA group: two flower buttons + wide archive button below */
 .closing-cta { text-align: center; margin-bottom: 72px; }
 .closing-cta h2 { font-size: 32px; margin-bottom: 26px; }
@@ -363,7 +365,7 @@ a { color: inherit; text-decoration: none; }
 }
 .tquote { font-family: 'Noto Serif Display', Georgia, serif; font-size: 48px; color: var(--brown-dark); line-height: 0.85; margin-bottom: 14px; }
 .ttext { font-size: 13px; opacity: 0.84; line-height: 1.65; margin-bottom: 14px; }
-.tattrib { font-size: 11px; font-weight: 600; opacity: 0.48; letter-spacing: 0.05em; }
+.tattrib { font-size: 11px; font-weight: 600; opacity: 0.48; letter-spacing: 0.05em; margin-bottom: 20px;}
 
 .archive-closing { font-style: italic; font-size: 14px; opacity: 0.72; text-align: center; max-width: 520px; margin: 0 auto; line-height: 1.7; }
 
