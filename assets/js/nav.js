@@ -53,15 +53,20 @@
     var ftr = document.getElementById('site-footer');
     if (ftr) ftr.innerHTML = buildFooter();
 
-    // Close dropdown when Escape is pressed while focus is inside it
-    // document.addEventListener('keydown', function (e) {
-    //   if (e.key === 'Escape') {
-    //     var focused = document.activeElement;
-    //     if (focused && focused.closest('.nav-dropdown')) {
-    //       var trigger = document.querySelector('.nav-dropdown-trigger');
-    //       if (trigger) trigger.focus();
-    //     }
-    //   }
-    // });
+    document.querySelectorAll('.bio-story-trigger').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.getElementById(btn.dataset.story).hidden = false;
+      });
+    });
+    document.querySelectorAll('.story-modal-overlay').forEach(overlay => {
+      overlay.addEventListener('click', e => {
+        if (e.target === overlay) overlay.hidden = true;
+      });
+      overlay.querySelector('.story-modal-close').addEventListener('click', () => {
+        overlay.hidden = true;
+      });
+    });
+
+    
   });
 })();

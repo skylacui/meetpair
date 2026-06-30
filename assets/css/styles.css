@@ -320,6 +320,10 @@ a { color: inherit; text-decoration: none; }
   border-radius: 50%; backface-visibility: hidden; overflow: hidden;
 }
 .bio-flip-front img { width: 100%; height: 100%; object-fit: cover; }
+.bio-flip-front img[src*="vanessa"] {
+  transform: scale(1.3);
+  transform-origin: center 60%;
+}
 .bio-flip-back {
   transform: rotateY(180deg);
   background: var(--card);
@@ -336,6 +340,72 @@ a { color: inherit; text-decoration: none; }
 .bio-roles { margin-bottom: 12px; }
 .bio-role-line { font-size: 12px; opacity: 0.68; line-height: 1.55; display: block; }
 .bio-text { font-size: 13px; opacity: 0.78; line-height: 1.62; }
+
+.bio-story-trigger {
+  font-family: inherit;
+  background: none;
+  border: none;
+  color: #A69278;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 4px 0;
+  margin-top: 4px;
+}
+.bio-story-trigger:hover { color: #8a7660; }
+
+.story-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(43,65,40,0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  z-index: 1000;
+}
+.story-modal {
+  background: #f9f9f7;
+  border-radius: 16px;
+  max-width: 760px;
+  width: 100%;
+  max-height: 80vh;
+  overflow-y: auto;
+  padding: 2.5rem;
+  box-shadow: 0 4px 16px rgba(43,65,40,0.1), 0 1px 4px rgba(43,65,40,0.06);
+  position: relative;
+}
+.story-modal a {
+  color: #A69278;
+  text-decoration: underline;
+}
+.story-modal a:hover {
+  color: #8a7660;
+}
+.story-modal p { font-size: 0.95rem; line-height: 1.7; color: #2b4128; margin: 0 0 1rem; }
+.story-modal blockquote {
+  font-style: italic;
+  border-left: 2px solid #A69278;
+  padding-left: 12px;
+  margin: 1.5rem 0;
+}
+.story-modal-overlay[hidden] {
+  display: none;
+}
+.story-modal-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: none;
+  background: transparent;
+  color: #2b4128;
+  font-size: 18px;
+  cursor: pointer;
+}
+.story-modal-close:hover { background: rgba(166,146,120,0.15); }
 
 /* ── ARCHIVE ── */
 .archive-header { padding-top: 60px; margin-bottom: 68px; }
